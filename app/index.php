@@ -43,6 +43,16 @@
             <input type="button" value="Login" onclick="login()" class="white-text">
         </form> 
     </div>
+    <div class="center">
+       <h1><?php
+            date_default_timezone_set("Asia/Bangkok");
+            echo date('d/m/y H:i:s');  
+           
+
+        ?></h1>
+        
+   </div>
+    
 
     <script>
         function login() {
@@ -60,5 +70,6 @@
             }
         }
     </script>
+    
 </body>
 </html>
