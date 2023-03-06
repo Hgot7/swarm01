@@ -5,6 +5,9 @@
     <title>Store Login</title>
     <style>
         /* Set the background color to gray */
+        h1{
+            text-align: center;
+        }
         body {
             background-color: gray;
         }
@@ -30,7 +33,7 @@
 <body>
     
     <div class="topic">
-    <h1 class="white-text">Store Login</h1>
+    <h1 class="white-text">spcn10 Login</h1>
 </div>
     <div class="center">
         
@@ -46,7 +49,13 @@
     <div class="center">
        <h1><?php
             date_default_timezone_set("Asia/Bangkok");
-            echo date('d/m/y H:i:s');  
+            echo'Today ';
+            echo date('d/m/y');
+            echo '<br/>';
+            echo'Time ';
+            echo date('H:i:s'); 
+            echo '<br/>';
+            echo'SPCN10 THANKYOU';
            
 
         ?></h1>

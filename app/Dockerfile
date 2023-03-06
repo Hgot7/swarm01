@@ -6,7 +6,7 @@ WORKDIR /var/www/html/
 
 COPY . /var/www/html/
 
-EXPOSE 77
+EXPOSE 80
 
 CMD ["apache2-foreground"]
 
