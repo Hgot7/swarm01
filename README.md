@@ -62,16 +62,16 @@
 ## Create Stack Deploy
 1. สร้างไฟล์ docker-compose.yaml
 	```
-	services:
-		web:
-			build:
-				context: app
-				target: dev-envs
-		ports:
-			- '80:80'
-		volumes:
-			- /var/run/docker.sock:/var/run/docker.sock
-			- ./app:/var/www/html/	
+services:
+  web:
+    build:
+      context: app
+      target: dev-envs
+    ports: 
+      - '80:80'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./app:/var/www/html/
 	 ```
 2. ให้ docker-compose.yaml ไป Stack Deploy on local โดยคำสั่ง
 		```
@@ -82,36 +82,37 @@
 - Revert Proxy File docker-compose-RevProxy.yaml on website Edit For stack on portainer.ipv9.me
 	```
 	version: '3.3'
-	services:
-		web:
-			image: TARGET_IMAGE[:TAG]
-			networks:
-			- webproxy
-			logging:
-				driver: json-file
-			volumes:
-			- app:/var/www/html/
-			container_name: swarm01-web2
-			deploy:
-				replicas: 1
-				labels:
-					- traefik.docker.network=webproxy
-					- traefik.enable=true
-					- traefik.http.routers.${APPNAME}-https.entrypoints=websecure
-					- traefik.http.routers.${APPNAME}-https.rule=Host("${APPNAME}.xops.ipv9.me")
-					- traefik.http.routers.${APPNAME}-https.tls.certresolver=default
-					- traefik.http.services.${APPNAME}.loadbalancer.server.port=80
-				resources:
-					reservations:
-						cpus: '0.1'
-						memory: 10M
-					limits:
-						cpus: '0.4'
-						memory: 50M
-	networks:
-		webproxy:
-			external: true
-	volumes:
-	app:
+services:
+  web:
+    image: TARGET_IMAGE[:TAG]
+    networks:
+     - webproxy
+    logging:
+      driver: json-file
+    volumes:
+      - app:/var/www/html/
+    container_name: swarm01-web2
+    deploy:
+      replicas: 1
+      labels:
+        - traefik.docker.network=webproxy
+        - traefik.enable=true
+        - traefik.http.routers.${APPNAME}-https.entrypoints=websecure
+        - traefik.http.routers.${APPNAME}-https.rule=Host("${APPNAME}.xops.ipv9.me")
+        - traefik.http.routers.${APPNAME}-https.tls.certresolver=default
+        - traefik.http.services.${APPNAME}.loadbalancer.server.port=80
+      resources:
+        reservations:
+          cpus: '0.1'
+          memory: 10M
+        limits:
+          cpus: '0.4'
+          memory: 50M
+networks:
+  webproxy:
+    external: true
+volumes:
+  app:
+
 	```
 	## Result ![image](https://user-images.githubusercontent.com/117428887/224103694-341e5c76-db3b-4418-9bb6-ef794059ed72.png)
