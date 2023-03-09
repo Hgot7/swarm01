@@ -61,7 +61,7 @@
 		```
 ## Create Stack Deploy
 1. สร้างไฟล์ docker-compose.yaml
-	```
+```
 services:
   web:
     build:
@@ -72,7 +72,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./app:/var/www/html/
-	 ```
+```
 2. ให้ docker-compose.yaml ไป Stack Deploy on local โดยคำสั่ง
 		```
 		docker compose up -d --build
@@ -80,7 +80,7 @@ services:
 ## Swarm Cluster
 ### Revert Proxy 
 - Revert Proxy File docker-compose-RevProxy.yaml on website Edit For stack on portainer.ipv9.me
-	```
+```
 	version: '3.3'
 services:
   web:
@@ -114,5 +114,5 @@ networks:
 volumes:
   app:
 
-	```
+```
 	## Result ![image](https://user-images.githubusercontent.com/117428887/224103694-341e5c76-db3b-4418-9bb6-ef794059ed72.png)
