@@ -75,9 +75,9 @@ services:
 ```
 2. ให้ docker-compose.yaml ไป Stack Deploy on local โดยคำสั่ง
 	```
-		docker compose up -d --build
+	docker compose up -d --build
 	```
-3. ตรวจสอบการใช้งานให้พิมพ์ Ip mechine:80 
+3. ตรวจสอบการใช้งานให้พิมพ์ Ip mechine:80 บน Web Browser
 	
 ## Swarm Cluster
 ### Revert Proxy 
