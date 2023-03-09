@@ -55,7 +55,7 @@
 		```
 		docker login
 		```
-2.   สร้างไฟล์ compose.yaml
+2.   คำสั่ง Push Image To Docker Hub
 		```
 		docker push TARGET_IMAGE[:TAG]
 		```
@@ -74,14 +74,16 @@ services:
       - ./app:/var/www/html/
 ```
 2. ให้ docker-compose.yaml ไป Stack Deploy on local โดยคำสั่ง
-		```
+	```
 		docker compose up -d --build
-		```
+	```
+3. ตรวจสอบการใช้งานให้พิมพ์ Ip mechine:80 
+	
 ## Swarm Cluster
 ### Revert Proxy 
 - Revert Proxy File docker-compose-RevProxy.yaml on website Edit For stack on portainer.ipv9.me
 ```
-	version: '3.3'
+version: '3.3'
 services:
   web:
     image: TARGET_IMAGE[:TAG]
