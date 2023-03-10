@@ -73,49 +73,48 @@
          - /var/run/docker.sock:/var/run/docker.sock
          - ./app:/var/www/html/
    ```
-   2. ให้ docker-compose.yaml ไป Stack Deploy on local โดยคำสั่ง
+2. ให้ docker-compose.yaml ไป Stack Deploy on local โดยคำสั่ง
    	```
    	docker compose up -d --build
    	```
-   3. ตรวจสอบการใช้งานให้พิมพ์ Ip mechine:80 บน Web Browser
+3. ตรวจสอบการใช้งานให้พิมพ์ Ip mechine:80 บน Web Browser
    
-   ## Swarm Cluster
-   ### Revert Proxy 
-   - Revert Proxy File docker-compose-RevProxy.yaml on website Edit For stack on portainer.ipv9.me
-   ```
-   version: '3.3'
-   services:
-     web:
-       image: TARGET_IMAGE[:TAG]
-       networks:
-        - webproxy
-       logging:
-         driver: json-file
-       volumes:
-         - app:/var/www/html/
-       container_name: TARGET_IMAGE
-       deploy:
-         replicas: 1
-         labels:
-           - traefik.docker.network=webproxy
-           - traefik.enable=true
-           - traefik.http.routers.${APPNAME}-https.entrypoints=websecure
-           - traefik.http.routers.${APPNAME}-https.rule=Host("${APPNAME}.xops.ipv9.me")
-           - traefik.http.routers.${APPNAME}-https.tls.certresolver=default
-           - traefik.http.services.${APPNAME}.loadbalancer.server.port=80
-         resources:
-           reservations:
-             cpus: '0.1'
-             memory: 10M
-           limits:
-             cpus: '0.4'
-             memory: 50M
-   networks:
-     webproxy:
-       external: true
-   volumes:
-     app:
-   
-   ```
+## Swarm Cluster
+### Revert Proxy 
+  - Revert Proxy File docker-compose-RevProxy.yaml on website Edit For stack on portainer.ipv9.me
+    ```
+    version: '3.3'
+    services:
+      web:
+        image: TARGET_IMAGE[:TAG]
+        networks:
+         - webproxy
+        logging:
+          driver: json-file
+        volumes:
+          - app:/var/www/html/
+        container_name: TARGET_IMAGE
+        deploy:
+          replicas: 1
+          labels:
+            - traefik.docker.network=webproxy
+            - traefik.enable=true
+            - traefik.http.routers.${APPNAME}-https.entrypoints=websecure
+            - traefik.http.routers.${APPNAME}-https.rule=Host("${APPNAME}.xops.ipv9.me")
+            - traefik.http.routers.${APPNAME}-https.tls.certresolver=default
+            - traefik.http.services.${APPNAME}.loadbalancer.server.port=80
+          resources:
+            reservations:
+              cpus: '0.1'
+              memory: 10M
+            limits:
+              cpus: '0.4'
+              memory: 50M
+    networks:
+      webproxy:
+        external: true
+    volumes:
+      app:
+    ```
 ## Result 
 ![image](https://user-images.githubusercontent.com/117428887/224107742-b0184ec8-72c6-4475-ac5c-83fac895ebca.png)
