@@ -51,14 +51,14 @@
 	 ```
 	 docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
 ## Push Image To Docker Hub
-1.  คำสั่งเข้าสู่ระบบ Docker ใน Vscode
-		```
-		docker login
-		```
-2.  คำสั่ง Push Image To Docker Hub
-		```
-		docker push TARGET_IMAGE[:TAG]
-		```
+1. คำสั่งเข้าสู่ระบบ Docker ใน Vscode
+	 ```
+	 docker login
+	 ```
+2. คำสั่ง Push Image To Docker Hub
+	 ```
+	 docker push TARGET_IMAGE[:TAG]
+	 ```
 ## Create Stack Deploy
 1. นำ docker-composeRevertProxy.yaml ไป Stack Deploy on website Edit on portainer.ipv9.me
     ```
