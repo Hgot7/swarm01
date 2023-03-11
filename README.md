@@ -3,7 +3,7 @@
 ### Ref awaresome-compose
 - [docker/awesome-compose/apache-php](https://github.com/docker/awesome-compose/tree/master/apache-php)
 ### Wakatime Project
-- [@spcn10/swarm01](https://wakatime.com/@spcn10/projects/otxagdylnv?start=2023-02-27&end=2023-03-05)
+- [@spcn10/swarm01](https://wakatime.com/@spcn10/projects/otxagdylnv)
 ### URL-DEPLOY
 - https://spcn10php.xops.ipv9.me/
 ## Setup-Linux
@@ -44,44 +44,23 @@
 ## Build-Image & Tag
 1. คำสั่งการ Build image
 	 ```
-	sudo docker compose "fastapi/compose.yaml" up -d --build
-	```
-2. คำสั่งการ Tag
+	 sudo docker compose "compose.yaml" up -d --build
 	 ```
-	docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
-	```
+2. ตรวจสอบการทำงานให้พิมพ์ Ip mechine:80 บน Web Browser
+3. คำสั่งการ Tag
+	 ```
+	 docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]
 ## Push Image To Docker Hub
-1.   คำสั่งเข้าสู่ระบบ Docker ใน Vscode
+1.  คำสั่งเข้าสู่ระบบ Docker ใน Vscode
 		```
 		docker login
 		```
-2.   คำสั่ง Push Image To Docker Hub
+2.  คำสั่ง Push Image To Docker Hub
 		```
 		docker push TARGET_IMAGE[:TAG]
 		```
 ## Create Stack Deploy
-1. สร้างไฟล์ docker-compose.yaml
-   ```
-   services:
-     web:
-       build:
-         context: app
-         target: dev-envs
-       ports: 
-         - '80:80'
-       volumes:
-         - /var/run/docker.sock:/var/run/docker.sock
-         - ./app:/var/www/html/
-   ```
-2. ให้ docker-compose.yaml ไป Stack Deploy on local โดยคำสั่ง
-   	```
-   	docker compose up -d --build
-   	```
-3. ตรวจสอบการใช้งานให้พิมพ์ Ip mechine:80 บน Web Browser
-   
-## Swarm Cluster
-### Revert Proxy 
-  - Revert Proxy File docker-compose-RevProxy.yaml on website Edit For stack on portainer.ipv9.me
+1. นำ docker-composeRevertProxy.yaml ไป Stack Deploy on website Edit on portainer.ipv9.me
     ```
     version: '3.3'
     services:
